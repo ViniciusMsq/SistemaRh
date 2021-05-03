@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>SistemaRh</title>
+</head>
+<body>
+  
+  <nav *ngIf="mostrarMenu" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" (click)="rotaHome()" style="cursor: pointer;">
+            <img src="../../assets/logoHome2.png" alt="" class="d-inline-block">
+          </a>
+      <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"  data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div  [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" (click)="rotaInscriptions()" style="cursor: pointer;">Inscrição</a>
+            </li>
+            <li ngbDropdown class="nav-item dropdown">
+                <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Administração
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><button class="dropdown-item" (click)="rotaCandidato()">Candidatos</button></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item" (click)="rotaVagas()">Vagas</button></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item" (click)="rotaLinguagens()">Linguagens</button></li>
+                </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+</body>
+</html>
+<router-outlet></router-outlet>
+

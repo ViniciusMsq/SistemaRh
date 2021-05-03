@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title _msthash="149916" _msttexthash="699920" _msthidden="1">Signin Template for Bootstrap</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+  <base href="/login">
+</head>
+
+<body class="text-center">
+  <br><br><br><br><br><br>  
+  <div class="d-flex justify-content-center">
+    <form class="form-signin">
+      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Por favor, faça login.</h1>
+      <hr>
+      <label for="login" class="sr-only">login</label>
+      <input type="text" [(ngModel)]="usuario.login" id="login" name="login" class="form-control" placeholder="login" autofocus="">
+      <label for="senha" class="sr-only">senha</label>
+      <input type="password" [(ngModel)]="usuario.senha" id="senha" name="senha" class="form-control" placeholder="senha">
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="fazerLogin()">Entrar</button>
+      <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    </form>
+  </div>
+</body>
+</html>
