@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LinguagemModel } from '../linguagens/linguagem.model';
+import { LinguagensService } from '../linguagens/linguagens.service';
 import { VagaModel } from './vaga.model';
 import { VagasService } from './vagas.service';
 
@@ -11,12 +13,16 @@ export class VagasComponent implements OnInit {
 
   vaga: VagaModel = new VagaModel();
   vagas: Array<any> = new Array();
+
+  linguagem: LinguagemModel = new LinguagemModel();
+  linguagens: Array<any> = new Array();
   
-  constructor(private vagasService: VagasService) { 
+  constructor(private vagasService: VagasService, private linguagemService: LinguagensService) { 
   }
 
   ngOnInit(): void {
     this.listarVagas();
+    this.listarLinguagens();
   }
 
   cadastrar(){
@@ -56,4 +62,11 @@ export class VagasComponent implements OnInit {
     })
   }
 
+  listarLinguagens(){
+    this.linguagemService.listarLinguagens().subscribe(linguagens => {
+      this.linguagens = linguagens;
+    }, err => {
+      console.log("Erro ao listar linguagens", err);
+    })
+  }
 }

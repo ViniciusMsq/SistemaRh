@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Vagas</title>
     <base href="/vagas">
 </head>
+
 <body>
     <hr class="dropdown-divider">
 
@@ -14,16 +16,16 @@
     <div class="d-flex justify-content-center">
         <form>
             <div class="form-row">
-              <div class="form-group">
-                <label>Descricao</label>
-                <input type="text" class="form-control"  size="50" placeholder="Vaga" id="vaga" name="vaga" [(ngModel)]="vaga.descricao">
-              </div>
+                <div class="form-group">
+                    <label>Descricao</label>
+                    <input type="text" class="form-control" size="50" placeholder="Vaga" id="vaga" name="vaga" [(ngModel)]="vaga.descricao">
+                </div>
             </div>
             <div class="form-row">
-              <div class="form-group">
-                <label>Empresa</label>
-                <input type="text" class="form-control" size="50" placeholder="Empresa" id="empresa" name="empresa" [(ngModel)]="vaga.empresa">
-              </div>
+                <div class="form-group">
+                    <label>Empresa</label>
+                    <input type="text" class="form-control" size="50" placeholder="Empresa" id="empresa" name="empresa" [(ngModel)]="vaga.empresa">
+                </div>
             </div>
 
             <!--<div class="form-row">
@@ -35,10 +37,38 @@
                     </select>
                 </div>
             </div>-->
-            <div class="d-flex justify-content-end"> 
+            <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
             </div>
-          </form>
+        </form>
+
+    </div>
+    <br>
+    <hr class="dropdown-divider">
+    <br>
+    <h5 class="d-flex justify-content-center">Relacionar vagas e suas linguagens</h5>
+    <div class="d-flex justify-content-center">
+        <form>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Vagas</label>
+                    <select id="vagas" name="vagas" class="form-control" >
+                      <option style="width:100%;" *ngFor="let vaga of vagas" value={{vaga.id}}>{{vaga.descricao}} - {{vaga.empresa}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Linguagens</label>
+                    <select id="linguagens" name="linguagens" class="form-control">
+                      <option style="width:100%;"  *ngFor="let linguagem of linguagens" value={{linguagem.id}}>{{linguagem.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Relacionar</button>
+            </div>
+        </form>
     </div>
     <br>
     <hr class="dropdown-divider">
@@ -57,15 +87,16 @@
             <td>{{vaga.empresa}}</td>
             <td class="overflow-hidden">
                 <div ngbDropdown container="body">
-                  <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>♠</button>
-                  <div ngbDropdownMenu>
-                    <button ngbDropdownItem (click)="atualizar(vaga.id)">Atualizar</button>
-                    <div class="dropdown-divider"></div>
-                    <button ngbDropdownItem (click)="remover(vaga.id)">Delete</button>
-                  </div>
+                    <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>♠</button>
+                    <div ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="atualizar(vaga.id)">Atualizar</button>
+                        <div class="dropdown-divider"></div>
+                        <button ngbDropdownItem (click)="remover(vaga.id)">Delete</button>
+                    </div>
                 </div>
-              </td>
+            </td>
         </tr>
     </table>
 </body>
+
 </html>
