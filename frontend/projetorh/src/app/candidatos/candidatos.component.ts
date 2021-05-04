@@ -27,7 +27,7 @@ export class CandidatosComponent implements OnInit {
       this.candidato = new CandidatoModel();
       this.listarCandidatos();
     }, err =>{
-      console.log("Erro ao cadastrar aluno", err)
+      console.log("Erro ao cadastrar Candidato", err)
     })
   }
 
@@ -36,7 +36,7 @@ export class CandidatosComponent implements OnInit {
       this.candidato = new CandidatoModel();
       this.listarCandidatos();
     }, err =>{
-      console.log("Erro ao atualizar aluno", err)
+      console.log("Erro ao atualizar Candidato", err)
     })
   }
 
@@ -45,7 +45,7 @@ export class CandidatosComponent implements OnInit {
       this.candidato = new CandidatoModel();
       this.listarCandidatos();
     },err =>{
-      console.log("Erro ao remover aluno", err)
+      console.log("Erro ao remover Candidato", err)
     })
   }
 
@@ -53,7 +53,7 @@ export class CandidatosComponent implements OnInit {
     this.candidatosService.listarCandidatos().subscribe(candidatos => {
       this.candidatos = candidatos;
     }, err => {
-      console.log("Erro ao listar alunos", err);
+      console.log("Erro ao listar Candidatos", err);
     })
   }
 }
