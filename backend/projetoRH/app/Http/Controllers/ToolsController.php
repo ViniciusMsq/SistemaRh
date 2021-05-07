@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tool;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\DB;
 
 class ToolsController extends Controller
 {
@@ -15,7 +16,11 @@ class ToolsController extends Controller
      */
     public function index()
     {
-        return Tool::all();    
+        return DB::table('vagas')
+        ->join('tools', 'vagas.id', '=', 'tools.id_vaga')
+        ->join('linguagens', 'linguagens.id', '=', 'tools.id_linguagem')
+        ->select('vagas.id', 'vagas.descricao', 'vagas.empresa', 'linguagens.nome')
+        ->get();      
 
     }
     /**
@@ -40,9 +45,15 @@ class ToolsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_vaga)
     {   
-        //
+        return DB::table('vagas')
+        ->join('tools', 'vagas.id', '=', 'tools.id_vaga')
+        ->join('linguagens', 'linguagens.id', '=', 'tools.id_linguagem')
+        ->select('vagas.id', 'vagas.descricao', 'vagas.empresa', 'linguagens.nome')
+        ->where('vagas.id', '=', $id_vaga)
+        ->orderBy('vagas.id', 'asc')
+        ->get(); 
     }
     /**
      * Update the specified resource in storage.
@@ -61,8 +72,8 @@ class ToolsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_vaga)
     {
-        //
+        Tool::findOrFail($id_vaga)->delete();
     }
 }

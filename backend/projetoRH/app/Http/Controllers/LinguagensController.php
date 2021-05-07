@@ -66,5 +66,6 @@ class LinguagensController extends Controller
     public function destroy($id)
     {
         Linguagen::findOrFail($id)->delete();
+        
     }
 }

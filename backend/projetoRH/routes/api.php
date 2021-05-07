@@ -58,13 +58,16 @@ Route::put('/vagas/{id}', [VagasController::class, 'update']);
 // rotas incrições
 Route::get('/inscricoes', [InscriptionsController::class, 'index']);
 
+Route::get('/inscricoes/{id_candidato}', [InscriptionsController::class, 'show']);
+
 Route::post('/inscricoes', [InscriptionsController::class, 'store']);
 
+Route::delete('/inscricoes/{id_candidato}', [InscriptionsController::class, 'destroy']);
 // rotas inscrições
 
 // rotas ferramentas de serviço
 Route::get('/ferramentas', [ToolsController::class, 'index']);
-
+Route::get('/ferramentas/{id_vaga}', [ToolsController::class, 'show']);
 Route::post('/ferramentas', [ToolsController::class, 'store']);
-
+Route::delete('/ferramentas/{id_vaga}', [ToolsController::class, 'destroy']);
 // rotas ferramentas de serviço

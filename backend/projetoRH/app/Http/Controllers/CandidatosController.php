@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Candidato;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\DB;
 
 class CandidatosController extends Controller
 {
@@ -67,6 +68,10 @@ class CandidatosController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('inscriptions')
+        ->where('id_candidato','=',$id)
+        ->delete();
+        
         Candidato::findOrFail($id)->delete();
     }
 }

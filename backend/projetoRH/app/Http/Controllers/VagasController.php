@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vaga;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\DB;
 
 class VagasController extends Controller
 {
@@ -65,6 +66,15 @@ class VagasController extends Controller
      */
     public function destroy($id)
     {
+
+        DB::table('inscriptions')
+        ->where('id_vaga','=',$id)
+        ->delete();
+        
+        DB::table('tools')
+        ->where('id_vaga','=',$id)
+        ->delete();
+
         Vaga::findOrFail($id)->delete();
     }
 }

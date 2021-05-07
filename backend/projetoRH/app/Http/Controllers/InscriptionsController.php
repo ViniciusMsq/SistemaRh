@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Inscription;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
-
+use Illuminate\Support\Facades\DB;
 class InscriptionsController extends Controller
 {
     /**
@@ -15,8 +15,13 @@ class InscriptionsController extends Controller
      */
     public function index()
     {
-        return Inscription::all();    
-
+        return DB::table('candidatos')
+        ->join('inscriptions', 'candidatos.id', '=', 'inscriptions.id_candidato')
+        ->join('vagas', 'vagas.id', '=', 'inscriptions.id_vaga')
+        ->select('candidatos.id', 'candidatos.nome','candidatos.data_nascimento','candidatos.sexo', 'vagas.descricao', 'vagas.empresa')
+        ->orderBy('id', 'asc')
+        ->get();
+            
     }
     /**
      * Store a newly created resource in storage.
@@ -41,9 +46,14 @@ class InscriptionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_candidato)
     {   
-        //
+        return DB::table('candidatos')
+        ->join('inscriptions', 'candidatos.id', '=', 'inscriptions.id_candidato')
+        ->join('vagas', 'vagas.id', '=', 'inscriptions.id_vaga')
+        ->select('candidatos.id', 'candidatos.nome','candidatos.data_nascimento','candidatos.sexo', 'vagas.descricao', 'vagas.empresa')
+        ->where('candidatos.id','=',$id_candidato)
+        ->get();
     }
     /**
      * Update the specified resource in storage.
@@ -62,8 +72,10 @@ class InscriptionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_candidato)
     {
-        //
+        DB::table('inscriptions')
+        ->where('id_candidato','=',$id_candidato)
+        ->delete();
     }
 }

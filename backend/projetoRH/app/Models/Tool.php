@@ -9,6 +9,7 @@ class Tool extends Model
 {
     public $timestamps = false;
     protected $table = 'tools';
+    protected $primaryKey = 'id_vaga';
     use HasFactory;
 
     protected $fillable = [
