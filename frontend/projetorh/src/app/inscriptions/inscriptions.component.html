@@ -7,8 +7,20 @@
     <title>Document</title>
     <base href="/inscricoes">
 </head>
-<body>
-    <p>inscriptions works!</p>
-</body>
+<body class="text-center">
+    <br><br><br><br><br><br>  
+    <div class="d-flex justify-content-center">
+      <form class="form-signin">
+        <h2 class="h3 mb-3 font-weight-normal">Por favor, faça login.</h2>
+        <hr>
+        <label for="login" class="sr-only">login</label>
+        <input type="text" [(ngModel)]="usuario.login" id="login" name="login" class="form-control" placeholder="login" autofocus="">
+        <label for="senha" class="sr-only">senha</label>
+        <input style="margin-top: 10px;" type="password" [(ngModel)]="usuario.senha" id="senha" name="senha" class="form-control" placeholder="senha">
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="fazerLogin()">Entrar</button>
+      </form>
+    </div>
+  </body>
 </html>
 

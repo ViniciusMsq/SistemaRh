@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { CandidatoVagaComponent } from './candidato-vaga/candidato-vaga.component';
 import { CandidatosComponent } from './candidatos/candidatos.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
@@ -16,9 +17,8 @@ const routes: Routes = [
   {path:"vagas", component: VagasComponent, canActivate:[AuthGuard]},
   {path:"linguagens", component:LinguagensComponent, canActivate:[AuthGuard]},
   {path:"home", component: HomeComponent, canActivate:[AuthGuard]},
-  {path:"login", component: LoginComponent}
-
-
+  {path:"login", component: LoginComponent},
+  {path:"candidatoVaga/:id", component: CandidatoVagaComponent}
 ];
 
 @NgModule({

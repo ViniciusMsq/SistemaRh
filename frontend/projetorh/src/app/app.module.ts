@@ -23,6 +23,7 @@ import { AuthService } from './login/auth.service';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { FooterComponent } from './footer/footer.component';
+import { CandidatoVagaComponent } from './candidato-vaga/candidato-vaga.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
     InscriptionsComponent,
     LoginComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    CandidatoVagaComponent
   ],
   imports: [
     BrowserModule,
