@@ -1,86 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <base href="/candidatos">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <base href="/candidatos">
 </head>
+
 <body>
-    <hr class="dropdown-divider">
+  <hr class="dropdown-divider">
 
-    <h2 class="d-flex justify-content-center">Cadastrar</h2>
-    <div class="d-flex justify-content-center">
-        <form>
-            <div class="form-row">
-              <div class="form-group col">
-                <label>Nome</label>
-                <input type="text" class="form-control" placeholder="Nome" id="nome" name="nome" [(ngModel)]="candidato.nome">
-              </div>
-              
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label>Login</label>
-                <input type="text" class="form-control" placeholder="Login" id="login" name="login" [(ngModel)]="candidato.login">
-              </div>
-              <div class="form-group col-md-6">
-                <label>Senha</label>
-                <input type="password" class="form-control" placeholder="Senha" name="senha" id="senha" [(ngModel)]="candidato.senha">
-              </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Data nascimento</label>
-                    <input type="date" class="form-control" id="data" name="data" [(ngModel)]="candidato.data_nascimento">
-                  </div>
-                <div class="form-group col-md-6">
-                    <label>Sexo</label>
-                    <select id="sexo" name="sexo" class="form-control" [(ngModel)]="candidato.sexo">
-                      <option value="M">Masculino</option>
-                      <option value="F">Feminino</option>
-                    </select>
-                </div>
-            </div>
-            <div class="d-flex justify-content-end"> 
-                <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
-            </div>
-          </form>
-    </div>
-    <br>
-    <hr class="dropdown-divider">
-    <br>
-    <h3 class="d-flex justify-content-center">Candidatos cadastrados</h3>
-    <table class="table table-striped">
-        <tr>
-            <th>#id</th>
-            <th>Nome</th>
-            <th>Data nasc</th>
-            <th>Sexo</th>
-            <th>login</th>
-            <th>senha</th>
-            <th>Ações</th>
-        </tr>
+  <h2 class="d-flex justify-content-center">Cadastrar</h2>
+  <div class="d-flex justify-content-center">
+    <form>
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Nome</label>
+          <input type="text" class="form-control" placeholder="Nome" id="nome" name="nome" [(ngModel)]="candidato.nome">
+        </div>
 
-        <tr *ngFor="let candidato of candidatos">
-            <td>{{candidato.id}}</td>
-            <td>{{candidato.nome}}</td>
-            <td>{{candidato.data_nascimento}}</td>
-            <td>{{candidato.sexo}}</td>
-            <td>{{candidato.login}}</td>
-            <td>{{candidato.senha}}</td>
-            <td class="overflow-hidden">
-                <div ngbDropdown container="body">
-                  <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>♠</button>
-                  <div ngbDropdownMenu>
-                    <button ngbDropdownItem (click)="atualizar(candidato.id)">Atualizar</button>
-                    <div class="dropdown-divider"></div>
-                    <button ngbDropdownItem (click)="remover(candidato.id)">Delete</button>
-                  </div>
-                </div>
-              </td>
-        </tr>
-    </table>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Login</label>
+          <input type="text" class="form-control" placeholder="Login" id="login" name="login"
+            [(ngModel)]="candidato.login">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Senha</label>
+          <input type="password" class="form-control" placeholder="Senha" name="senha" id="senha"
+            [(ngModel)]="candidato.senha">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Data nascimento</label>
+          <input type="date" class="form-control" id="data" name="data" [(ngModel)]="candidato.data_nascimento">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Sexo</label>
+          <select id="sexo" name="sexo" class="form-control" [(ngModel)]="candidato.sexo">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+  <br>
+  <hr class="dropdown-divider">
+  <br>
+  <h5 class="d-flex justify-content-center">Relacionar vagas e suas linguagens</h5>
+  <div class="d-flex justify-content-center">
+    <form>
+      <div class="form-row">
+        
+        <div class="form-group col">
+          <label>Candidatos</label>
+          <select id="candidatos" name="candidatos" class="form-control" [(ngModel)]="inscription.id_candidato">
+            <option style="width:100%;" *ngFor="let candidato of candidatos" value={{candidato.id}}>
+              {{candidato.id}}-{{candidato.nome}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Vagas</label>
+          <select id="vagas" name="vagas" class="form-control" [(ngModel)]="inscription.id_vaga">
+            <option style="width:100%;" *ngFor="let vaga of vagas" value={{vaga.id}}>{{vaga.descricao}} -
+              {{vaga.empresa}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" (click)="cadInscricao()">Relacionar</button>
+      </div>
+    </form>
+  </div>
+  <h3 class="d-flex justify-content-center">Candidatos cadastrados</h3>
+  <table class="table table-striped">
+    <tr>
+      <th>#id</th>
+      <th>Nome</th>
+      <th>Data nasc</th>
+      <th>Sexo</th>
+      <th>login</th>
+      <th>senha</th>
+      <th>Inscrições</th>
+      <th>Ações</th>
+    </tr>
+
+    <tr *ngFor="let candidato of candidatos">
+      <td>{{candidato.id}}</td>
+      <td>{{candidato.nome}}</td>
+      <td>{{candidato.data_nascimento}}</td>
+      <td>{{candidato.sexo}}</td>
+      <td>{{candidato.login}}</td>
+      <td>{{candidato.senha}}</td>
+      <td>
+        <ul *ngFor="let inscription of inscriptions">
+          <li *ngIf="candidato.id === inscription.id">{{inscription.descricao}}-{{inscription.empresa}}</li>
+        </ul>
+      </td>
+      <td class="overflow-hidden">
+        <div ngbDropdown container="body">
+          <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>♠</button>
+          <div ngbDropdownMenu>
+            <button ngbDropdownItem (click)="atualizar(candidato.id)">Atualizar</button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem (click)="remover(candidato.id)">Delete</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
 </body>
+
 </html>

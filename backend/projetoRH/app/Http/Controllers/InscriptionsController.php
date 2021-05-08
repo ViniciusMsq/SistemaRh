@@ -18,7 +18,7 @@ class InscriptionsController extends Controller
         return DB::table('candidatos')
         ->join('inscriptions', 'candidatos.id', '=', 'inscriptions.id_candidato')
         ->join('vagas', 'vagas.id', '=', 'inscriptions.id_vaga')
-        ->select('candidatos.id', 'candidatos.nome','candidatos.data_nascimento','candidatos.sexo', 'vagas.descricao', 'vagas.empresa')
+        ->select('candidatos.id', 'inscriptions.id_vaga',   'candidatos.nome','candidatos.data_nascimento','candidatos.sexo', 'vagas.descricao', 'vagas.empresa')
         ->orderBy('id', 'asc')
         ->get();
             
@@ -51,7 +51,7 @@ class InscriptionsController extends Controller
         return DB::table('candidatos')
         ->join('inscriptions', 'candidatos.id', '=', 'inscriptions.id_candidato')
         ->join('vagas', 'vagas.id', '=', 'inscriptions.id_vaga')
-        ->select('candidatos.id', 'candidatos.nome','candidatos.data_nascimento','candidatos.sexo', 'vagas.descricao', 'vagas.empresa')
+        ->select('candidatos.id', 'inscriptions.id_vaga', 'candidatos.nome','candidatos.data_nascimento','candidatos.sexo', 'vagas.descricao', 'vagas.empresa')
         ->where('candidatos.id','=',$id_candidato)
         ->get();
     }

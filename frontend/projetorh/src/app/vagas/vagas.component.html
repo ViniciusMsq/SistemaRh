@@ -18,25 +18,17 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Descricao</label>
-                    <input type="text" class="form-control" size="50" placeholder="Vaga" id="vaga" name="vaga" [(ngModel)]="vaga.descricao">
+                    <input type="text" class="form-control" size="50" placeholder="Vaga" id="vaga" name="vaga"
+                        [(ngModel)]="vaga.descricao">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Empresa</label>
-                    <input type="text" class="form-control" size="50" placeholder="Empresa" id="empresa" name="empresa" [(ngModel)]="vaga.empresa">
+                    <input type="text" class="form-control" size="50" placeholder="Empresa" id="empresa" name="empresa"
+                        [(ngModel)]="vaga.empresa">
                 </div>
             </div>
-
-            <!--<div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Sexo</label>
-                    <select id="sexo" name="sexo" class="form-control" [(ngModel)]="vaga.sexo">
-                      <option value="M">Masculino</option>
-                      <option value="F">Feminino</option>
-                    </select>
-                </div>
-            </div>-->
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
             </div>
@@ -52,21 +44,23 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label>Vagas</label>
-                    <select id="vagas" name="vagas" class="form-control" >
-                      <option style="width:100%;" *ngFor="let vaga of vagas" value={{vaga.id}}>{{vaga.descricao}} - {{vaga.empresa}}</option>
+                    <select id="vagas" name="vagas" class="form-control" [(ngModel)]="tool.id_vaga">
+                        <option style="width:100%;" *ngFor="let vaga of vagas" value={{vaga.id}}>{{vaga.descricao}} -
+                            {{vaga.empresa}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
                     <label>Linguagens</label>
-                    <select id="linguagens" name="linguagens" class="form-control">
-                      <option style="width:100%;"  *ngFor="let linguagem of linguagens" value={{linguagem.id}}>{{linguagem.nome}}</option>
+                    <select id="linguagens" name="linguagens" class="form-control" [(ngModel)]="tool.id_linguagem">
+                        <option style="width:100%;" *ngFor="let linguagem of linguagens" value={{linguagem.id}}>
+                            {{linguagem.nome}}</option>
                     </select>
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Relacionar</button>
+                <button type="submit" class="btn btn-primary" (click)="cadFerramenta()">Relacionar</button>
             </div>
         </form>
     </div>
@@ -79,12 +73,22 @@
             <th>#id</th>
             <th>Descrição</th>
             <th>Empresa</th>
+            <th>Linguagens</th>
         </tr>
 
         <tr *ngFor="let vaga of vagas">
             <td>{{vaga.id}}</td>
             <td>{{vaga.descricao}}</td>
             <td>{{vaga.empresa}}</td>
+            <td>
+                <ul *ngFor="let tool of tools">
+                    <li *ngIf="vaga.id === tool.id">{{tool.nome}}</li>
+                </ul>
+                <!--<select id="tool" name="tools" class="form-control">
+                    <option style="width:100%;" (click)="listarFerramentasId(vaga.id)" 
+                        value={{vaga.id}} *ngFor="let tool of tools" [ngIf]="vaga.id === tool.id">{{tool.nome}}</option>
+                </select>-->
+            </td>
             <td class="overflow-hidden">
                 <div ngbDropdown container="body">
                     <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>♠</button>

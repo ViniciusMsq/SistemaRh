@@ -35,7 +35,15 @@
       </div>
     </div>
   </nav>
- 
+  <app-home *ngIf="mostrarMenu"></app-home>
+
+  <footer class="footer mt-auto py-3 bg-dark" style="position: absolute; bottom: 0; width: 100%;" *ngIf="mostrarMenu">
+    <div class="container">
+      <p class="text-light">App desenvolvido por <a href="https://github.com/ViniciusMsq" target="_blank" rel="noreferrer">Vinicius Mesquini</a>&nbsp; <a href="https://www.linkedin.com/in/vinicius-mesquini/" target="_new">
+        <img src="../assets/Linkedin.svg" alt="">
+       </a></p>
+    </div>
+  </footer>
 </body>
 </html>
 <router-outlet></router-outlet>
