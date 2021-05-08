@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthGuard } from './guards/auth.guard';
     ToolsComponent,
     InscriptionsComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

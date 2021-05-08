@@ -21,7 +21,7 @@ export class AuthService {
       this.usuarioAutenticado = true;
       
       this.mostrarMenuEmitter.emit(true);
-      this.router.navigate(['/'])
+      this.router.navigate(['/home'])
       
     }else{
       this.usuarioAutenticado = false;

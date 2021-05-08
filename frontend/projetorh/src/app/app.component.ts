@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   rotaHome(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
   rotaCandidato(){
     this.router.navigate(['/candidatos']);
