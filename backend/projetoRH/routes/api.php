@@ -62,7 +62,7 @@ Route::get('/inscricoes/{id_candidato}', [InscriptionsController::class, 'show']
 
 Route::post('/inscricoes', [InscriptionsController::class, 'store']);
 
-Route::delete('/inscricoes/{id_candidato}', [InscriptionsController::class, 'destroy']);
+Route::delete('/inscricoes/{id_candidato}/{id_vaga}', [InscriptionsController::class, 'destroy']);
 // rotas inscrições
 
 // rotas ferramentas de serviço

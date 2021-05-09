@@ -72,10 +72,11 @@ class InscriptionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_candidato)
+    public function destroy($id_candidato, $id_vaga)
     {
         DB::table('inscriptions')
         ->where('id_candidato','=',$id_candidato)
+        ->where('id_vaga', '=', $id_vaga)
         ->delete();
     }
 }
